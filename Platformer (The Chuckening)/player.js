@@ -18,19 +18,6 @@ var Player = function ()
 	this.image.src = "hero.png";
 };
 
-if (left)
-	ddx = ddx - ACCEL; // player wants to go left
-else if (wasleft)
-	ddx = ddx + FRICTION; // player was going left, but not any more
-if (right)
-	ddx = ddx + ACCEL; // player wants to go right
-else if (wasright)
-	ddx = ddx - FRICTION; // player was going right, but not any more
-if (jump && !this.jumping && !falling) {
-	ddy = ddy - JUMP; // apply an instantaneous (large) vertical impulse
-	this.jumping = true;
-}
-// calculate the new position and velocity:
 this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 this.velocity.x = bound(this.velocity.x + (deltaTime * ddx), -MAXDX, MAXDX);
